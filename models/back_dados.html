@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welterson Gabriel — Back-end Dev com foco em Dados</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #050a0f;
+      --surface: #0a1520;
+      --surface2: #0f1e2e;
+      --be: #ff5f7e;
+      --de: #00d4ff;
+      --be-dim: rgba(255,95,126,0.12);
+      --de-dim: rgba(56,217,245,0.10);
+      --text: #eef0ff;
+      --muted: #5a6080;
+      --border: #1a3a52;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      overflow-x: hidden;
+      cursor: none;
+    }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(var(--be), var(--de)); }
+
+    /* Cursor */
+    .cur { position:fixed; pointer-events:none; z-index:9999; }
+    #cur-dot { width:8px; height:8px; background:#fff; border-radius:50%; transform:translate(-50%,-50%); }
+    #cur-ring { width:36px; height:36px; border:1.5px solid rgba(255,255,255,0.2); border-radius:50%; transform:translate(-50%,-50%); transition: width .2s, height .2s, border-color .2s; }
+
+    /* BG grid */
+    #bg-canvas { position:fixed; inset:0; z-index:0; pointer-events:none; opacity:0.022; }
+
+    /* Nav */
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:200;
+      padding:1.1rem 3rem;
+      display:flex; justify-content:space-between; align-items:center;
+      background:rgba(7,8,15,0.85); backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-logo {
+      font-family:'Space Mono',monospace; font-size:0.8rem; letter-spacing:0.06em;
+    }
+    .nav-logo .be { color:var(--be); }
+    .nav-logo .de { color:var(--de); }
+    .nav-links { display:flex; gap:2.2rem; list-style:none; }
+    .nav-links a { font-size:0.82rem; font-weight:600; color:var(--muted); text-decoration:none; transition:color .2s; }
+    .nav-links a:hover { color:var(--text); }
+    .nav-dot { display:flex; align-items:center; gap:0.5rem; font-family:'Space Mono',monospace; font-size:0.68rem; color:var(--de); }
+    .ndot { width:7px; height:7px; border-radius:50%; background:var(--de); animation:pulse 2s infinite; }
+    @keyframes pulse { 50%{ opacity:.3; transform:scale(.6); } }
+
+    /* Hero */
+    #hero {
+      min-height:100vh; display:flex; align-items:center;
+      padding:0 3rem;
+    }
+    .hero-inner {
+      width:100%; max-width:1100px; margin:0 auto;
+      display:grid; grid-template-columns:1fr 400px; gap:5rem; align-items:center;
+    }
+
+    .hero-tag {
+      display:inline-flex; align-items:center; gap:0.5rem;
+      font-family:'Space Mono',monospace; font-size:0.68rem;
+      letter-spacing:0.12em; text-transform:uppercase;
+      padding:0.4rem 1rem; border-radius:100px;
+      border:1px solid var(--border);
+      color:var(--muted); margin-bottom:1.8rem;
+      opacity:0; animation:up .5s .1s forwards;
+    }
+    .hero-tag .dot-be { width:7px; height:7px; border-radius:50%; background:var(--be); }
+    .hero-tag .dot-de { width:7px; height:7px; border-radius:50%; background:var(--de); }
+
+    h1.hero-name {
+      font-size: clamp(3.2rem, 5.5vw, 5.5rem);
+      font-weight:900; line-height:1.0; letter-spacing:-0.03em;
+      margin-bottom:0.5rem;
+      opacity:0; animation:up .5s .25s forwards;
+    }
+    .hero-name .grad {
+      background:linear-gradient(110deg, var(--be) 0%, #ffb347 50%, var(--de) 100%);
+      -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+    }
+
+    .hero-role {
+      font-family:'Space Mono',monospace; font-size:0.85rem;
+      color:var(--muted); margin-bottom:2rem;
+      opacity:0; animation:up .5s .38s forwards;
+    }
+    .hero-role .hl { color:var(--text); }
+
+    .hero-bio {
+      font-size:1.05rem; line-height:1.9; color:#8a90b8;
+      max-width:500px; margin-bottom:2.5rem;
+      opacity:0; animation:up .5s .5s forwards;
+    }
+    .hero-bio strong { color:var(--text); font-weight:600; }
+
+    .hero-ctas { display:flex; gap:0.9rem; opacity:0; animation:up .5s .62s forwards; }
+    .btn {
+      padding:.72rem 1.7rem; font-family:'Space Mono',monospace;
+      font-size:.72rem; letter-spacing:.08em; text-transform:uppercase;
+      text-decoration:none; border-radius:6px; cursor:none;
+      transition:all .2s; font-weight:700;
+    }
+    .btn-be { background:var(--be); color:var(--bg); }
+    .btn-be:hover { filter:brightness(1.15); box-shadow:0 0 28px rgba(255,95,126,.4); }
+    .btn-outline { background:transparent; border:1.5px solid var(--border); color:var(--muted); }
+    .btn-outline:hover { border-color:rgba(255,255,255,.3); color:var(--text); }
+
+    @keyframes up { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+
+    /* Profile card */
+    .profile-card {
+      opacity:0; animation:up .7s .45s forwards;
+      background:var(--surface);
+      border:1px solid var(--border); border-radius:14px;
+      padding:2rem; position:relative; overflow:hidden;
+    }
+    .profile-card::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:3px;
+      background:linear-gradient(90deg, var(--be), var(--de));
+    }
+    .pc-avatar {
+      width:64px; height:64px; border-radius:50%;
+      background:linear-gradient(135deg, var(--be-dim), var(--de-dim));
+      border:2px solid var(--border);
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.6rem; margin-bottom:1rem;
+    }
+    .pc-name { font-size:1.1rem; font-weight:800; margin-bottom:.2rem; }
+    .pc-title { font-family:'Space Mono',monospace; font-size:.68rem; color:var(--muted); margin-bottom:1.5rem; }
+
+    .pc-section { margin-bottom:1.4rem; }
+    .pc-label {
+      font-family:'Space Mono',monospace; font-size:.6rem;
+      letter-spacing:.12em; text-transform:uppercase; color:var(--muted);
+      margin-bottom:.7rem;
+    }
+    .pc-skills { display:flex; flex-wrap:wrap; gap:.4rem; }
+    .pcs {
+      font-family:'Space Mono',monospace; font-size:.62rem;
+      padding:.22rem .65rem; border-radius:5px;
+    }
+    .pcs.be { background:var(--be-dim); color:var(--be); }
+    .pcs.de { background:var(--de-dim); color:var(--de); border:1px dashed rgba(56,217,245,.3); }
+    .pcs.learning {
+      background:rgba(255,200,0,.08); color:#ffc800;
+      border:1px dashed rgba(255,200,0,.3);
+    }
+
+    .learning-note {
+      font-family:'Space Mono',monospace; font-size:.65rem;
+      color:var(--muted); line-height:1.6;
+      padding:.8rem 1rem;
+      background:rgba(56,217,245,.05);
+      border:1px solid rgba(56,217,245,.1);
+      border-radius:6px;
+      display:flex; gap:.6rem; align-items:flex-start;
+    }
+    .learning-note .icon { font-size:.9rem; flex-shrink:0; margin-top:.05rem; }
+
+    /* Strip */
+    .strip {
+      border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+      background:var(--surface);
+      display:flex; justify-content:center; gap:5rem; padding:2.2rem 3rem;
+      flex-wrap:wrap;
+    }
+    .strip-item { text-align:center; }
+    .strip-val { font-size:2.4rem; font-weight:900; display:block; line-height:1; }
+    .strip-val.be { color:var(--be); }
+    .strip-val.de { color:var(--de); }
+    .strip-lbl { font-family:'Space Mono',monospace; font-size:.6rem; color:var(--muted); letter-spacing:.1em; text-transform:uppercase; margin-top:.3rem; }
+
+    /* Skills */
+    #skills { padding:7rem 3rem; max-width:1100px; margin:0 auto; }
+    .skills-wrap { display:grid; grid-template-columns:1fr 1fr; gap:4rem; }
+
+    .sk-col-head { display:flex; align-items:center; gap:.8rem; margin-bottom:2rem; }
+    .sk-dot { width:10px; height:10px; border-radius:50%; }
+    .sk-dot.be { background:var(--be); box-shadow:0 0 10px var(--be); }
+    .sk-dot.de { background:var(--de); box-shadow:0 0 10px var(--de); }
+    .sk-col-title { font-size:1.3rem; font-weight:800; }
+
+    .sk-item { margin-bottom:1.3rem; }
+    .sk-row { display:flex; justify-content:space-between; margin-bottom:.35rem; }
+    .sk-name { font-family:'Space Mono',monospace; font-size:.75rem; }
+    .sk-meta { font-family:'Space Mono',monospace; font-size:.62rem; color:var(--muted); }
+    .sk-track { height:3px; background:var(--border); border-radius:2px; overflow:hidden; }
+    .sk-fill { height:100%; border-radius:2px; width:0%; transition:width 1.2s cubic-bezier(.16,1,.3,1); }
+    .sk-fill.be { background:linear-gradient(90deg, var(--be), #ffb347); }
+    .sk-fill.de { background:linear-gradient(90deg, var(--de), #38f5b5); }
+    .sk-fill.learn { background:linear-gradient(90deg, #ffc800, #ffb347); }
+
+    .learning-badge {
+      display:inline-block; font-family:'Space Mono',monospace;
+      font-size:.58rem; padding:.15rem .5rem; border-radius:4px;
+      background:rgba(255,200,0,.1); color:#ffc800;
+      border:1px dashed rgba(255,200,0,.3); margin-left:.5rem;
+    }
+
+    /* Projects */
+    #projects {
+      padding:7rem 3rem;
+      background:var(--surface);
+      border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+    }
+    .proj-inner { max-width:1100px; margin:0 auto; }
+    .proj-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.3rem; }
+
+    .proj-card {
+      background:var(--bg); border:1px solid var(--border);
+      border-radius:12px; padding:1.8rem;
+      cursor:none; transition:transform .25s, border-color .25s, box-shadow .25s;
+      position:relative; overflow:hidden;
+    }
+    .proj-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; opacity:0; transition:opacity .3s; }
+    .proj-card.be::before { background:linear-gradient(90deg, var(--be), #ffb347); }
+    .proj-card.de::before { background:linear-gradient(90deg, var(--de), #38f5b5); }
+    .proj-card:hover { transform:translateY(-5px); }
+    .proj-card.be:hover { border-color:var(--be); box-shadow:0 12px 40px rgba(255,95,126,.12); }
+    .proj-card.de:hover { border-color:var(--de); box-shadow:0 12px 40px rgba(56,217,245,.10); }
+    .proj-card:hover::before { opacity:1; }
+
+    .proj-type {
+      font-family:'Space Mono',monospace; font-size:.6rem;
+      letter-spacing:.12em; text-transform:uppercase;
+      padding:.2rem .65rem; border-radius:4px;
+      display:inline-block; margin-bottom:1.1rem;
+    }
+    .proj-type.be { background:var(--be-dim); color:var(--be); }
+    .proj-type.de { background:var(--de-dim); color:var(--de); }
+
+    .proj-name { font-size:1rem; font-weight:800; margin-bottom:.5rem; line-height:1.3; }
+    .proj-desc {
+      font-family:'Space Mono',monospace; font-size:.67rem;
+      color:var(--muted); line-height:1.75; margin-bottom:1.1rem;
+    }
+    .proj-tags { display:flex; flex-wrap:wrap; gap:.3rem; }
+    .ptag {
+      font-family:'Space Mono',monospace; font-size:.58rem;
+      padding:.18rem .55rem; border-radius:4px;
+      border:1px solid var(--border); color:var(--muted);
+    }
+
+    /* Journey */
+    #journey { padding:7rem 3rem; max-width:1100px; margin:0 auto; }
+
+    .journey-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:1.3rem; margin-top:3rem; }
+    .jc {
+      background:var(--surface); border:1px solid var(--border);
+      border-radius:12px; padding:1.8rem;
+      position:relative; overflow:hidden;
+      transition:border-color .2s, transform .2s;
+    }
+    .jc:hover { transform:translateY(-4px); }
+    .jc.be:hover { border-color:var(--be); }
+    .jc.de:hover { border-color:var(--de); }
+    .jc.future { border-style:dashed; }
+    .jc.future:hover { border-color:var(--de); }
+
+    .jc-year {
+      font-family:'Space Mono',monospace; font-size:.65rem;
+      color:var(--muted); margin-bottom:.6rem;
+    }
+    .jc-icon { font-size:1.5rem; margin-bottom:.8rem; }
+    .jc-title { font-size:1rem; font-weight:800; margin-bottom:.5rem; }
+    .jc-desc {
+      font-family:'Space Mono',monospace; font-size:.67rem;
+      color:var(--muted); line-height:1.75;
+    }
+    .jc-badge {
+      position:absolute; top:1.5rem; right:1.5rem;
+      font-family:'Space Mono',monospace; font-size:.58rem;
+      padding:.18rem .55rem; border-radius:4px;
+    }
+    .jc-badge.be { background:var(--be-dim); color:var(--be); }
+    .jc-badge.de { background:var(--de-dim); color:var(--de); }
+    .jc-badge.now { background:rgba(255,200,0,.1); color:#ffc800; }
+
+    /* Contact */
+    #contact {
+      padding:7rem 3rem;
+      background:var(--surface);
+      border-top:1px solid var(--border);
+    }
+    .contact-inner { max-width:700px; margin:0 auto; text-align:center; }
+    .contact-title {
+      font-size:clamp(2rem,4vw,3.2rem); font-weight:900;
+      letter-spacing:-0.02em; line-height:1.1; margin-bottom:1rem;
+    }
+    .contact-title .grad {
+      background:linear-gradient(110deg, var(--be), var(--de));
+      -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+    }
+    .contact-sub {
+      font-family:'Space Mono',monospace; font-size:.78rem;
+      color:var(--muted); line-height:1.85; margin-bottom:2.5rem;
+    }
+    .contact-email {
+      display:inline-block; font-family:'Space Mono',monospace;
+      font-size:clamp(.9rem,2vw,1.2rem);
+      background:linear-gradient(110deg, var(--be), var(--de));
+      -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+      text-decoration:none; border-bottom:1px solid var(--border);
+      padding-bottom:.2rem; transition:border-color .2s; margin-bottom:2.5rem;
+    }
+    .contact-email:hover { border-color:var(--be); }
+    .contact-links { display:flex; justify-content:center; gap:.9rem; flex-wrap:wrap; }
+    .cl {
+      font-family:'Space Mono',monospace; font-size:.7rem;
+      text-decoration:none; color:var(--muted);
+      padding:.52rem 1.2rem; border:1px solid var(--border);
+      border-radius:6px; letter-spacing:.06em; transition:all .2s;
+    }
+    .cl:hover { color:var(--text); border-color:rgba(255,255,255,.25); }
+
+    /* Footer */
+    footer {
+      padding:1.5rem 3rem;
+      border-top:1px solid var(--border);
+      display:flex; justify-content:space-between; align-items:center;
+    }
+    footer span { font-family:'Space Mono',monospace; font-size:.62rem; color:var(--muted); }
+
+    /* Section headings */
+    .sec-eyebrow {
+      font-family:'Space Mono',monospace; font-size:.68rem;
+      letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin-bottom:.7rem;
+    }
+    .sec-title {
+      font-size:clamp(2rem,4vw,3rem); font-weight:900;
+      letter-spacing:-0.02em; line-height:1.1; margin-bottom:3.5rem;
+    }
+    .sec-title .be { color:var(--be); }
+    .sec-title .de { color:var(--de); }
+
+    /* Reveal */
+    .reveal { opacity:0; transform:translateY(26px); transition:opacity .65s ease, transform .65s ease; }
+    .reveal.v { opacity:1; transform:none; }
+    .reveal.d1{transition-delay:.05s} .reveal.d2{transition-delay:.12s}
+    .reveal.d3{transition-delay:.19s} .reveal.d4{transition-delay:.26s}
+    .reveal.d5{transition-delay:.33s} .reveal.d6{transition-delay:.4s}
+
+    @media(max-width:900px){
+      nav { padding:1rem 1.5rem; }
+      .nav-links { display:none; }
+      #hero { padding:5rem 1.5rem 3rem; }
+      .hero-inner { grid-template-columns:1fr; }
+      .profile-card { display:none; }
+      .strip { gap:2rem; }
+      #skills { padding:4rem 1.5rem; }
+      .skills-wrap { grid-template-columns:1fr; gap:2.5rem; }
+      #projects { padding:4rem 1.5rem; }
+      .proj-grid { grid-template-columns:1fr; }
+      #journey { padding:4rem 1.5rem; }
+      .journey-cards { grid-template-columns:1fr; }
+      #contact { padding:4rem 1.5rem; }
+      footer { flex-direction:column; gap:.5rem; text-align:center; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cur" id="cur-dot"></div>
+<div class="cur" id="cur-ring"></div>
+<canvas id="bg-canvas"></canvas>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><span class="be">back-end</span> <span style="color:var(--border)">→</span> <span class="de">data</span></div>
+  <ul class="nav-links">
+    <li><a href="#skills">habilidades</a></li>
+    <li><a href="#projects">projetos</a></li>
+    <li><a href="#journey">jornada</a></li>
+    <li><a href="#contact">contato</a></li>
+  </ul>
+  <div class="nav-dot"><div class="ndot"></div>disponível</div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">
+        <div class="dot-be"></div>
+        back-end dev
+        <span style="color:var(--border)">→</span>
+        <div class="dot-de"></div>
+        engenharia de dados
+      </div>
+      <h1 class="hero-name">
+        <span class="grad">Welterson</span><br>Gabriel
+      </h1>
+      <div class="hero-role">
+        <span class="hl">Desenvolvedor Back-end</span> com foco crescente em <span class="hl">Dados</span>
+      </div>
+      <p class="hero-bio">
+        Construo APIs robustas com <strong>Python, FastAPI e Django</strong> e estou
+        expandindo meu repertório para engenharia de dados — aprendendo a
+        transformar os dados que minhas APIs geram em <strong>insights reais</strong>.
+      </p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn btn-be">Ver Projetos</a>
+        <a href="#contact" class="btn btn-outline">Contato</a>
+      </div>
+    </div>
+
+    <!-- Profile card -->
+    <div class="profile-card">
+      <div class="pc-avatar">👨‍💻</div>
+      <div class="pc-name">Welterson Gabriel</div>
+      <div class="pc-title">Back-end Dev · Estudante de Data Eng.</div>
+
+      <div class="pc-section">
+        <div class="pc-label">back-end — consolidado</div>
+        <div class="pc-skills">
+          <span class="pcs be">Python</span>
+          <span class="pcs be">FastAPI</span>
+          <span class="pcs be">Django</span>
+          <span class="pcs be">PostgreSQL</span>
+          <span class="pcs be">Docker</span>
+          <span class="pcs be">REST APIs</span>
+        </div>
+      </div>
+
+      <div class="pc-section">
+        <div class="pc-label">dados — praticando</div>
+        <div class="pc-skills">
+          <span class="pcs de">SQL avançado</span>
+          <span class="pcs de">Pandas</span>
+          <span class="pcs de">Numpy</span>
+        </div>
+      </div>
+
+      <div class="pc-section">
+        <div class="pc-label">dados — estudando</div>
+        <div class="pc-skills">
+          <span class="pcs learning">Airflow</span>
+          <span class="pcs learning">dbt</span>
+          <span class="pcs learning">Spark</span>
+        </div>
+      </div>
+
+      <div class="learning-note">
+        <span class="icon">🎯</span>
+        <span>Meu objetivo é unir back-end sólido com engenharia de dados — criando sistemas que não só funcionam, mas que também entendem o que produzem.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip reveal">
+  <div class="strip-item">
+    <span class="strip-val be">3+</span>
+    <span class="strip-lbl">anos back-end</span>
+  </div>
+  <div class="strip-item">
+    <span class="strip-val be">15+</span>
+    <span class="strip-lbl">APIs entregues</span>
+  </div>
+  <div class="strip-item">
+    <span class="strip-val de">1+</span>
+    <span class="strip-lbl">ano estudando dados</span>
+  </div>
+  <div class="strip-item">
+    <span class="strip-val de">∞</span>
+    <span class="strip-lbl">vontade de aprender</span>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-eyebrow">habilidades</div>
+  <h2 class="sec-title">O que <span class="be">sei</span> e o<br>que estou <span class="de">aprendendo</span></h2>
+
+  <div class="skills-wrap">
+    <!-- Back-end -->
+    <div>
+      <div class="sk-col-head reveal">
+        <div class="sk-dot be"></div>
+        <span class="sk-col-title">Back-end Development</span>
+      </div>
+      <div class="sk-item reveal d1">
+        <div class="sk-row"><span class="sk-name">Python</span><span class="sk-meta">sólido</span></div>
+        <div class="sk-track"><div class="sk-fill be" data-w="92"></div></div>
+      </div>
+      <div class="sk-item reveal d2">
+        <div class="sk-row"><span class="sk-name">FastAPI</span><span class="sk-meta">sólido</span></div>
+        <div class="sk-track"><div class="sk-fill be" data-w="85"></div></div>
+      </div>
+      <div class="sk-item reveal d3">
+        <div class="sk-row"><span class="sk-name">Django / DRF</span><span class="sk-meta">sólido</span></div>
+        <div class="sk-track"><div class="sk-fill be" data-w="80"></div></div>
+      </div>
+      <div class="sk-item reveal d4">
+        <div class="sk-row"><span class="sk-name">PostgreSQL</span><span class="sk-meta">bom nível</span></div>
+        <div class="sk-track"><div class="sk-fill be" data-w="78"></div></div>
+      </div>
+      <div class="sk-item reveal d5">
+        <div class="sk-row"><span class="sk-name">Docker / REST</span><span class="sk-meta">bom nível</span></div>
+        <div class="sk-track"><div class="sk-fill be" data-w="75"></div></div>
+      </div>
+    </div>
+
+    <!-- Data -->
+    <div>
+      <div class="sk-col-head reveal">
+        <div class="sk-dot de"></div>
+        <span class="sk-col-title">Engenharia de Dados</span>
+      </div>
+      <div class="sk-item reveal d1">
+        <div class="sk-row">
+          <span class="sk-name">SQL Avançado</span>
+          <span class="sk-meta">praticando</span>
+        </div>
+        <div class="sk-track"><div class="sk-fill de" data-w="72"></div></div>
+      </div>
+      <div class="sk-item reveal d2">
+        <div class="sk-row">
+          <span class="sk-name">Pandas / Numpy</span>
+          <span class="sk-meta">praticando</span>
+        </div>
+        <div class="sk-track"><div class="sk-fill de" data-w="65"></div></div>
+      </div>
+      <div class="sk-item reveal d3">
+        <div class="sk-row">
+          <span class="sk-name">Apache Airflow <span class="learning-badge">estudando</span></span>
+          <span class="sk-meta">iniciante</span>
+        </div>
+        <div class="sk-track"><div class="sk-fill learn" data-w="30"></div></div>
+      </div>
+      <div class="sk-item reveal d4">
+        <div class="sk-row">
+          <span class="sk-name">dbt <span class="learning-badge">estudando</span></span>
+          <span class="sk-meta">iniciante</span>
+        </div>
+        <div class="sk-track"><div class="sk-fill learn" data-w="25"></div></div>
+      </div>
+      <div class="sk-item reveal d5">
+        <div class="sk-row">
+          <span class="sk-name">Apache Spark <span class="learning-badge">estudando</span></span>
+          <span class="sk-meta">iniciante</span>
+        </div>
+        <div class="sk-track"><div class="sk-fill learn" data-w="20"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="proj-inner">
+    <div class="sec-eyebrow">projetos</div>
+    <h2 class="sec-title reveal">O que já <span class="be">construí</span><br>e o que estou <span class="de">explorando</span></h2>
+    <div class="proj-grid">
+      <div class="proj-card be reveal d1">
+        <div class="proj-type be">Back-end</div>
+        <div class="proj-name">API REST de Autenticação</div>
+        <div class="proj-desc">API com JWT, refresh tokens, controle de permissões por roles e documentação automática com Swagger.</div>
+        <div class="proj-tags">
+          <span class="ptag">FastAPI</span>
+          <span class="ptag">PostgreSQL</span>
+          <span class="ptag">JWT</span>
+          <span class="ptag">Docker</span>
+        </div>
+      </div>
+
+      <div class="proj-card be reveal d2">
+        <div class="proj-type be">Back-end</div>
+        <div class="proj-name">Sistema de Pedidos</div>
+        <div class="proj-desc">API Django para gestão de pedidos e estoque com notificações assíncronas e relatórios básicos em CSV.</div>
+        <div class="proj-tags">
+          <span class="ptag">Django</span>
+          <span class="ptag">DRF</span>
+          <span class="ptag">Celery</span>
+          <span class="ptag">Redis</span>
+        </div>
+      </div>
+
+      <div class="proj-card de reveal d3">
+        <div class="proj-type de">Dados — estudo</div>
+        <div class="proj-name">Análise de Dados com Pandas</div>
+        <div class="proj-desc">Projeto de estudo analisando dados públicos de vendas: limpeza, transformação e visualização com Pandas e Matplotlib.</div>
+        <div class="proj-tags">
+          <span class="ptag">Pandas</span>
+          <span class="ptag">Numpy</span>
+          <span class="ptag">Matplotlib</span>
+          <span class="ptag">SQL</span>
+        </div>
+      </div>
+
+      <div class="proj-card be reveal d4">
+        <div class="proj-type be">Back-end</div>
+        <div class="proj-name">API de Métricas</div>
+        <div class="proj-desc">Endpoint que agrega dados de uso da aplicação e expõe métricas em tempo real para monitoramento.</div>
+        <div class="proj-tags">
+          <span class="ptag">FastAPI</span>
+          <span class="ptag">PostgreSQL</span>
+          <span class="ptag">SQL</span>
+        </div>
+      </div>
+
+      <div class="proj-card de reveal d5">
+        <div class="proj-type de">Dados — estudo</div>
+        <div class="proj-name">Pipeline ETL Simples</div>
+        <div class="proj-desc">Primeiro pipeline ETL de estudo: extração de CSV, transformações com Pandas e carga em banco PostgreSQL.</div>
+        <div class="proj-tags">
+          <span class="ptag">Pandas</span>
+          <span class="ptag">PostgreSQL</span>
+          <span class="ptag">Python</span>
+        </div>
+      </div>
+
+      <div class="proj-card de reveal d6" style="border-style:dashed;">
+        <div class="proj-type de">Em construção 🚧</div>
+        <div class="proj-name">Pipeline com Airflow</div>
+        <div class="proj-desc">Primeiro projeto real com Airflow — orquestrando a ingestão diária de dados de uma API pública para análise.</div>
+        <div class="proj-tags">
+          <span class="ptag">Airflow</span>
+          <span class="ptag">Pandas</span>
+          <span class="ptag">PostgreSQL</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section id="journey">
+  <div class="sec-eyebrow">jornada</div>
+  <h2 class="sec-title reveal">De onde vim,<br>para onde <span class="de">vou</span></h2>
+
+  <div class="journey-cards">
+    <div class="jc be reveal d1">
+      <div class="jc-badge be">Back-end</div>
+      <div class="jc-year">2021 — 2023</div>
+      <div class="jc-icon">⚙️</div>
+      <div class="jc-title">Construindo a base</div>
+      <div class="jc-desc">Primeiros anos desenvolvendo APIs com Django e FastAPI, aprendendo sobre bancos de dados, autenticação e boas práticas de código.</div>
+    </div>
+
+    <div class="jc de reveal d2">
+      <div class="jc-badge de">Descoberta</div>
+      <div class="jc-year">2024</div>
+      <div class="jc-icon">💡</div>
+      <div class="jc-title">O click dos dados</div>
+      <div class="jc-desc">Percebendo que as APIs que eu construía geravam dados valiosos que precisavam ser analisados. Início dos estudos em SQL avançado e Pandas.</div>
+    </div>
+
+    <div class="jc future reveal d3">
+      <div class="jc-badge now">agora →</div>
+      <div class="jc-year">2025</div>
+      <div class="jc-icon">🚀</div>
+      <div class="jc-title">Back-end + Dados</div>
+      <div class="jc-desc">Aprofundando em Airflow, dbt e pipelines de dados. O objetivo: ser o profissional que entende tanto de construir sistemas quanto de extrair valor dos dados que eles geram.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="sec-eyebrow reveal">contato</div>
+    <h2 class="contact-title reveal">Vamos <span class="grad">conversar</span>?</h2>
+    <p class="contact-sub reveal">
+      Aberto a projetos back-end e oportunidades onde possa<br>
+      também aprender e crescer na área de dados.
+    </p>
+    <a href="mailto:welterson@dev.io" class="contact-email reveal">welterson@dev.io</a>
+    <div class="contact-links reveal">
+      <a href="#" class="cl">GitHub</a>
+      <a href="#" class="cl">LinkedIn</a>
+      <a href="#" class="cl">Currículo</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Welterson Gabriel</span>
+  <span>feito com Python ❤️ e muita curiosidade</span>
+</footer>
+
+<script>
+/* Cursor */
+const dot=document.getElementById('cur-dot'), ring=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function loop(){
+  dot.style.left=mx+'px'; dot.style.top=my+'px';
+  rx+=(mx-rx)*.1; ry+=(my-ry)*.1;
+  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  requestAnimationFrame(loop);
+})();
+document.querySelectorAll('a,.proj-card,.jc').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ring.style.width='52px';ring.style.height='52px';ring.style.borderColor='rgba(255,95,126,.5)';});
+  el.addEventListener('mouseleave',()=>{ring.style.width='36px';ring.style.height='36px';ring.style.borderColor='rgba(255,255,255,.2)';});
+});
+
+/* BG Grid */
+const canvas=document.getElementById('bg-canvas');
+const ctx=canvas.getContext('2d');
+function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+resize(); window.addEventListener('resize',resize);
+let t=0;
+(function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  const sz=64;
+  ctx.lineWidth=.5;
+  for(let x=0;x<canvas.width+sz;x+=sz){
+    ctx.strokeStyle=`rgba(255,255,255,${.3+.3*Math.sin(x*.018+t)})`;
+    ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,canvas.height); ctx.stroke();
+  }
+  for(let y=0;y<canvas.height+sz;y+=sz){
+    ctx.strokeStyle=`rgba(255,255,255,${.3+.3*Math.sin(y*.018-t)})`;
+    ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(canvas.width,y); ctx.stroke();
+  }
+  t+=.0025; requestAnimationFrame(draw);
+})();
+
+/* Reveal */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('v'); });
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* Skill bars */
+const sio=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.sk-fill').forEach(b=>{ b.style.width=b.dataset.w+'%'; });
+    }
+  });
+},{threshold:.2});
+document.querySelectorAll('.skills-wrap > div').forEach(c=>sio.observe(c));
+</script>
+</body>
+</html>
