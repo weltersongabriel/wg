@@ -1,9 +1,9 @@
 :root {
       --bg: #050a0f;
-      --surface: #0a1520;
+      --surface: #0a1520; 
       --surface2: #0f1e2e;
-      --be: #ff5f7e;
-      --de: #00d4ff;
+      --be: #22C55E;
+      --de: #06B6D4;
       --be-dim: rgba(255,95,126,0.12);
       --de-dim: rgba(56,217,245,0.10);
       --text: #eef0ff;
@@ -48,8 +48,8 @@
     .nav-links { display:flex; gap:2.2rem; list-style:none; }
     .nav-links a { font-size:0.82rem; font-weight:600; color:var(--muted); text-decoration:none; transition:color .2s; }
     .nav-links a:hover { color:var(--text); }
-    .nav-dot { display:flex; align-items:center; gap:0.5rem; font-family:'Space Mono',monospace; font-size:0.68rem; color:var(--de); }
-    .ndot { width:7px; height:7px; border-radius:50%; background:var(--de); animation:pulse 2s infinite; }
+    .nav-dot { display:flex; align-items:center; gap:0.5rem; font-family:'Space Mono',monospace; font-size:0.68rem; color:var(--be); }
+    .ndot { width:7px; height:7px; border-radius:50%; background:var(--be); animation:pulse 2s infinite; }
     @keyframes pulse { 50%{ opacity:.3; transform:scale(.6); } }
 
     /* Hero */
@@ -81,7 +81,7 @@
       opacity:0; animation:up .5s .25s forwards;
     }
     .hero-name .grad {
-      background: #00d4ff;
+      background: var(--de);
       -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
     }
 
@@ -106,7 +106,7 @@
       text-decoration:none; border-radius:6px; cursor:none;
       transition:all .2s; font-weight:700;
     }
-    .btn-be { background:var(--be); color:var(--bg); }
+    .btn-be { background:var(--de); color:var(--bg); }
     .btn-be:hover { filter:brightness(1.15); box-shadow:0 0 28px rgba(255,95,126,.4); }
     .btn-outline { background:transparent; border:1.5px solid var(--border); color:var(--muted); }
     .btn-outline:hover { border-color:rgba(255,255,255,.3); color:var(--text); }
@@ -286,6 +286,10 @@
       font-family: 'Space Mono', monospace; font-size: 0.75rem;
       color: var(--muted); margin-bottom: 3rem;
       opacity: 0; animation: up .5s .3s forwards;
+    }
+
+    .bbe{
+      color: #06B6D4;
     }
 
     .cert-grid {
@@ -536,7 +540,7 @@
       letter-spacing:-0.02em; line-height:1.1; margin-bottom:1rem;
     }
     .contact-title .grad {
-      background:linear-gradient(110deg, var(--be), var(--de));
+      background:#fff;
       -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
     }
     .contact-sub {
@@ -546,7 +550,7 @@
     .contact-email {
       display:inline-block; font-family:'Space Mono',monospace;
       font-size:clamp(.9rem,2vw,1.2rem);
-      background:linear-gradient(110deg, var(--be), var(--de));
+      background:#fff;
       -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
       text-decoration:none; border-bottom:1px solid var(--border);
       padding-bottom:.2rem; transition:border-color .2s; margin-bottom:2.5rem;
