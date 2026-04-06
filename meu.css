@@ -241,6 +241,33 @@
       border:1px solid var(--border); color:var(--muted);
     }
 
+    .proj-github-btn {
+      display:inline-flex; align-items:center; gap:.45rem;
+      margin-top:1.1rem;
+      font-family:'Space Mono',monospace; font-size:.62rem;
+      letter-spacing:.06em; text-transform:uppercase; text-decoration:none;
+      padding:.45rem 1rem; border-radius:6px;
+      border:1px solid var(--border); color:var(--muted);
+      background:transparent;
+      transition:all .2s; cursor:none;
+    }
+    .proj-github-btn:hover {
+      color:var(--be); border-color:var(--be);
+      background:var(--be-dim);
+      box-shadow:0 0 14px rgba(34,197,94,.15);
+    }
+    .proj-github-btn.fe:hover {
+      color:var(--fe); border-color:var(--fe);
+      background:rgba(255,0,0,.08);
+      box-shadow:0 0 14px rgba(255,0,0,.12);
+    }
+    .proj-github-btn.de:hover {
+      color:var(--de); border-color:var(--de);
+    }
+    .proj-github-btn.be:hover {
+      color:var(--be); border-color:var(--be);
+    }
+
     /* Cursor */
     .cur { position:fixed; pointer-events:none; z-index:9999; }
     #cur-dot { width:8px; height:8px; background:#fff; border-radius:50%; transform:translate(-50%,-50%); }
