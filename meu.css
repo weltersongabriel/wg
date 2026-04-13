@@ -88,14 +88,14 @@
     }
 
     .hero-role {
-      font-family:'Space Mono',monospace; font-size:0.85rem;
+      font-family:'Space Mono',monospace; font-size:1.0rem;
       color:var(--muted); margin-bottom:2rem;
       opacity:0; animation:up .5s .38s forwards;
     }
     .hero-role .hl { color:var(--text); }
 
     .hero-bio {
-      font-size:1.05rem; line-height:1.9; color:#8a90b8;
+      font-size:1.55rem; line-height:1.9; color:#8a90b8;
       max-width:500px; margin-bottom:2.5rem;
       opacity:0; animation:up .5s .5s forwards;
     }
@@ -626,7 +626,7 @@
     .reveal.d3{transition-delay:.19s} .reveal.d4{transition-delay:.26s}
     .reveal.d5{transition-delay:.33s} .reveal.d6{transition-delay:.4s}
 
-    @media(max-width:800px){
+    @media(max-width:700px){
       nav { padding:1rem 1.5rem; }
       .nav-links { display:none; }
       #hero { padding:5rem 1.5rem 3rem; }
