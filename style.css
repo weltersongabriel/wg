@@ -656,3 +656,37 @@ footer span { font-family: 'Space Mono', monospace; font-size: .62rem; color: va
   .contact-links { gap: .5rem; }
   .cl { font-size: .6rem; padding: .4rem .7rem; }
 }
+
+
+.tech-icon {
+  height: 50px; /* Define uma altura fixa para todos */
+  width: auto;   /* Mantém a proporção da largura */
+  margin: 0 40px;
+  /* Opcional: deixa as imagens levemente cinzas e coloridas no hover */
+}
+
+.tech-icon:hover {
+  filter: grayscale(0%);
+}
+
+/* Garante que o container alinhe as imagens no centro verticalmente */
+.logos-slide {
+  display: inline-flex; /* Use flex para alinhar as imagens */
+  animation: 17s slide infinite linear; /* Verifique se o nome 'slide' bate com o de baixo */
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.logos {
+  overflow: hidden;
+  white-space: nowrap; /* Isso impede que as imagens quebrem para a linha de baixo */
+  position: relative;
+  width: 100%;
+}

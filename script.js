@@ -45,3 +45,13 @@ const sio=new IntersectionObserver(entries=>{
   });
 },{threshold:.2});
 document.querySelectorAll('.skills-wrap > div').forEach(c=>sio.observe(c));
+
+
+// Este código "engana" o olho criando uma cópia idêntica da lista
+const logosContainer = document.querySelector(".logos");
+const logosSlide = document.querySelector(".logos-slide");
+
+// Clona a lista de logos
+const copy = logosSlide.cloneNode(true);
+// Adiciona a cópia dentro do container principal
+logosContainer.appendChild(copy);
