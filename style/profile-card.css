@@ -1,0 +1,48 @@
+/* ══════════════════════════════════════════
+   PROFILE CARD
+══════════════════════════════════════════ */
+.profile-card {
+  opacity: 0; animation: up .7s .45s forwards;
+  background: var(--surface);
+  border: 1px solid var(--border); border-radius: 14px;
+  padding: 2rem; position: relative; overflow: hidden;
+}
+.profile-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--be), var(--de));
+}
+.pc-avatar {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--be-dim), var(--de-dim));
+  border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem; margin-bottom: 1rem;
+}
+.pc-name { font-size: 1.1rem; font-weight: 800; margin-bottom: .2rem; }
+.pc-title { font-family: 'Space Mono', monospace; font-size: .68rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+.pc-section { margin-bottom: 1.4rem; }
+.pc-label {
+  font-family: 'Space Mono', monospace; font-size: .6rem;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+  margin-bottom: .7rem;
+}
+.pc-skills { display: flex; flex-wrap: wrap; gap: .4rem; }
+.pcs {
+  font-family: 'Space Mono', monospace; font-size: .62rem;
+  padding: .22rem .65rem; border-radius: 5px;
+}
+.pcs.be { background: var(--be-dim); color: var(--be); }
+.pcs.de { background: var(--de-dim); color: var(--de); border: 1px dashed rgba(56,217,245,.3); }
+.pcs.learning { background: rgba(255,200,0,.08); color: #ffc800; border: 1px dashed rgba(255,200,0,.3); }
+
+.learning-note {
+  font-family: 'Space Mono', monospace; font-size: .65rem;
+  color: var(--muted); line-height: 1.6;
+  padding: .8rem 1rem;
+  background: rgba(56,217,245,.05);
+  border: 1px solid rgba(56,217,245,.1);
+  border-radius: 6px;
+  display: flex; gap: .6rem; align-items: flex-start;
+}
+.learning-note .icon { font-size: .9rem; flex-shrink: 0; margin-top: .05rem; }

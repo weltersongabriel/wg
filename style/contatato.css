@@ -1,0 +1,39 @@
+/* ══════════════════════════════════════════
+   CONTACT
+══════════════════════════════════════════ */
+#contact {
+  padding: 7rem 3rem;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+.contact-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+.contact-title {
+  font-size: clamp(1.8rem, 5vw, 3.2rem); font-weight: 900;
+  letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1rem;
+}
+.contact-title .grad {
+  background: #fff;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.contact-sub {
+  font-family: 'Space Mono', monospace; font-size: .78rem;
+  color: var(--muted); line-height: 1.85; margin-bottom: 2.5rem;
+}
+.contact-email {
+  display: inline-block; font-family: 'Space Mono', monospace;
+  font-size: clamp(.85rem, 2.5vw, 1.2rem);
+  background: #fff;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  text-decoration: none; border-bottom: 1px solid var(--border);
+  padding-bottom: .2rem; transition: border-color .2s; margin-bottom: 2.5rem;
+  word-break: break-all;
+}
+.contact-email:hover { border-color: var(--be); }
+.contact-links { display: flex; justify-content: center; gap: .9rem; flex-wrap: wrap; }
+.cl {
+  font-family: 'Space Mono', monospace; font-size: .7rem;
+  text-decoration: none; color: var(--muted);
+  padding: .52rem 1.2rem; border: 1px solid var(--border);
+  border-radius: 6px; letter-spacing: .06em; transition: all .2s;
+}
+.cl:hover { color: var(--text); border-color: rgba(255,255,255,.25); }
