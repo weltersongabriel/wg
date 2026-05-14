@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="./style/certificados.css">
     <link rel="stylesheet" href="./style/contatato.css">
     <link rel="stylesheet" href="./style/RESPONSIVE.css">
-    
+
     <link rel="icon" type="image/png" href="./img/favicon.png">
     <title>weltersongabriel</title>
 </head>
@@ -127,119 +127,30 @@
 <br><br><br>
 <!-- SKILLS -->
 <section id="skills">
-  <div class="sec-eyebrow">habilidades</div>
-  <h2 class="sec-title">O que <span class="bbe">sei</span> e o<br>que estou <span class="de">aprendendo</span></h2>
-  <br>
-  <div class="skills-wrap">
-    <!-- Back-end -->
-    <div>
-      <div class="sk-col-head reveal">
-        <div class="sk-dot be"></div>
-        <span class="sk-col-title">Desenvolvedor Back-end</span>
-      </div>
-      <div class="sk-item reveal d1">
-        <div class="sk-row"><span class="sk-name">FastApi</span><span class="sk-meta">intermediário</span></div>
-        <div class="sk-track"><div class="sk-fill be" data-w="77"></div></div>
-      </div>
-      <div class="sk-item reveal d2">
-        <div class="sk-row"><span class="sk-name">Flask</span><span class="sk-meta">básico</span></div>
-        <div class="sk-track"><div class="sk-fill be" data-w="60"></div></div>
-      </div>
-      <div class="sk-item reveal d3">
-        <div class="sk-row"><span class="sk-name">Node</span><span class="sk-meta">básico</span></div>
-        <div class="sk-track"><div class="sk-fill be" data-w="40"></div></div>
-      </div>
-      <!--
-      <div class="sk-item reveal d4">
-        <div class="sk-row"><span class="sk-name">Django</span><span class="sk-meta"></span></div>
-        <div class="sk-track"><div class="sk-fill be" data-w="0"></div></div>
-      </div>
-      
-      <div class="sk-item reveal d5">
-        <div class="sk-row"><span class="sk-name">Docker / REST</span><span class="sk-meta"></span></div>
-        <div class="sk-track"><div class="sk-fill be" data-w="75"></div></div>
-      </div>
-    </div>
-    -->
-
-    <!-- Data -->
-    <div>
-      <div class="sk-col-head reveal">
-        <div class="sk-dot fe"></div>
-        <span class="sk-col-title">Desenvolvedor Front-end</span>
-      </div>
-      <div class="sk-item reveal d1">
-        <div class="sk-row">
-          <span class="sk-name">HTML</span>
-          <span class="sk-meta">intermediário</span>
-        </div>
-        <div class="sk-track"><div class="sk-fill fe" data-w="80"></div></div>
-      </div>
-      <div class="sk-item reveal d2">
-        <div class="sk-row">
-          <span class="sk-name">CSS</span>
-          <span class="sk-meta">intermediário</span>
-        </div>
-        <div class="sk-track"><div class="sk-fill fe" data-w="70"></div></div>
-      </div>
-      <div class="sk-item reveal d3">
-        <div class="sk-row">
-          <span class="sk-name">React</span>
-          <span class="sk-meta">estudando</span>
-        </div>
-        <div class="sk-track"><div class="sk-fill fe" data-w="40"></div></div>
-      </div>
-      <!--
-      <div class="sk-item reveal d3">
-        <div class="sk-row">
-          <span class="sk-name">Apache Airflow <span class=""></span></span>
-          <span class="sk-meta">iniciante</span>
-        </div>
-        <div class="sk-track"><div class="sk-fill learn" data-w="30"></div></div>
-      </div>
-      <div class="sk-item reveal d4">
-        <div class="sk-row">
-          <span class="sk-name">dbt <span class=""></span></span>
-          <span class="sk-meta">iniciante</span>
-        </div>
-        <div class="sk-track"><div class="sk-fill learn" data-w="25"></div></div>
-      </div>
-      <div class="sk-item reveal d5">
-        <div class="sk-row">
-          <span class="sk-name">Apache Spark <span class=""></span></span>
-          <span class="sk-meta">iniciante</span>
-        </div>
-        <div class="sk-track"><div class="sk-fill learn" data-w="20"></div></div>
-      </div>
-    </div>
-    -->
+  <div class="skills-header">
+    <h2>O que sei e o que <br><span>estou aprendendo</span></h2>
+    <p class="skills-sub">// habilidades</p>
   </div>
-  <!--Front-->
-  <div class="sk-col-head reveal">
-        <div class="sk-dot de"></div>
-        <span class="sk-col-title">Engenheiro de Dados</span>
-      </div>
-      <div class="sk-item reveal d1">
-        <div class="sk-row">
-          <span class="sk-name">SQL</span>
-          <span class="sk-meta">estudando</span>
-        </div>
-        <div class="sk-track"><div class="sk-fill de" data-w="30"></div></div>
-      </div>
-      <div class="sk-item reveal d2">
-        <div class="sk-row">
-          <span class="sk-name">Pandas</span>
-          <span class="sk-meta">estudando</span>
-        </div>
-        <div class="sk-track"><div class="sk-fill de" data-w="30"></div></div>
-      </div>
-       <div class="sk-item reveal d3">
-        <div class="sk-row">
-          <span class="sk-name">Streamlit</span>
-          <span class="sk-meta">estudando</span>
-        </div>
-        <div class="sk-track"><div class="sk-fill de" data-w="30"></div></div>
-      </div>
+ 
+  <div class="sk-tabs" role="tablist">
+    <button class="sk-tab active" data-cat="backend" role="tab" aria-selected="true">
+      <span class="tab-dot be"></span> Backend
+    </button>
+    <button class="sk-tab" data-cat="frontend" role="tab">
+      <span class="tab-dot fe"></span> Frontend
+    </button>
+    <button class="sk-tab" data-cat="dados" role="tab">
+      <span class="tab-dot de"></span> Bancos &amp; Dados
+    </button>
+    <button class="sk-tab" data-cat="cloud" role="tab">
+      <span class="tab-dot cl"></span> Cloud &amp; DevOps
+    </button>
+    <button class="sk-tab" data-cat="linguagens" role="tab">
+      <span class="tab-dot ln"></span> Linguagens &amp; Estudos
+    </button>
+  </div>
+ 
+  <div class="sk-grid" id="sk-grid"></div>
 </section>
 
 <!-- PROJECTS -->
