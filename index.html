@@ -1,394 +1,352 @@
 <!DOCTYPE html>
-<html lang="pt_br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="./style/style.css">
-    <link rel="stylesheet" href="./style/nav.css">
-    <link rel="stylesheet" href="./style/hero.css">
-    <link rel="stylesheet" href="./style/profile-card.css">
-    <link rel="stylesheet" href="./style/skills.css">
-    <link rel="stylesheet" href="./style/projetos.css">
-    <link rel="stylesheet" href="./style/certificados.css">
-    <link rel="stylesheet" href="./style/contatato.css">
-    <link rel="stylesheet" href="./style/RESPONSIVE.css">
-
-    <link rel="icon" type="image/png" href="./img/favicon.png">
-    <title>weltersongabriel</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Portfólio | Desenvolvedor Web</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Ícones (FontAwesome) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Fonte Google (Inter) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    
-<div class="cur" id="cur-dot"></div>
-<div class="cur" id="cur-ring"></div>
-<canvas id="bg-canvas"></canvas>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo"><span class="be">dev</span> <span style="color:var(--border)">→</span> <span class="de">data</span></div>
-  <ul class="nav-links">
-    <li><a href="#skills">habilidades</a></li>
-    <li><a href="#projects">projetos</a></li>
-    <li><a href="#certificates">certificaçoes</a></li>
-    <li><a href="#contact">contato</a></li>
-  </ul>
-  <div class="nav-dot"><div class="ndot"></div>disponível</div>
-</nav>
-
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-inner">
-    <div>
-      <div class="hero-tag">
-        <div class="dot-fe"></div>
-        front-end dev
-        <span style="color:var(--border)">→</span>
-        <div class="dot-de"></div>
-        back-end dev
-      </div>
-      <h1 class="hero-name">
-        <span class="grad">Welterson</span><br>Gabriel
-      </h1>
-      <div class="hero-role">
-        <span class="hl">Estudante do curso de Ciência da Computação</span>
-      </div>
-
-      <p class="hero-bio">
-        <strong>Desenvolvedor Full-Stack focado em APIs e Sistemas Web |</strong> <strong style="color: #06B6D4;">Buscando estágio</strong>.
-      </p>
-
-      <div class="hero-ctas">
-        <a href="https://www.linkedin.com/in/welterson-gabriel-131473313/" class="btn btn-be">Linkedin</a>
-        <a href="https://wa.me/qr/S622G6QRKDIQL1" class="btn btn-outline">Contato</a>
-      </div>
-    </div>
-
-    <!-- Profile card -->
-    <div class="profile-card">
-      <div class="pc-avatar">👨🏻‍💻</div>
-      <div class="pc-name">Welterson Gabriel</div>
-      <div class="pc-title">Estudante de Ciência da Computação</div>
-
-      <div class="pc-section">
-        <div class="pc-label">Linguagens</div>
-        <div class="pc-skills">
-          <span class="pcs be">Python</span>
-          <span class="pcs be">Java</span>
-          <span class="pcs be">JavaScript</span>
-        </div>
-      </div>
-
-      <div class="pc-section">
-        <div class="pc-label">Frameworks  — Ferramentas</div>
-        <div class="pc-skills">
-          <span class="pcs de">Node</span>
-          <span class="pcs de">FastAPI</span>
-          <span class="pcs de">Flask</span>
-        </div>
-      </div>
-
-      <div class="pc-section">
-        <div class="pc-label">Banco de Dados</div>
-        <div class="pc-skills">
-          <span class="pcs learning">MySQL</span>
-        </div>
-      </div>
-
-      <div class="learning-note">
-        <span class="icon">🎯</span>
-        <span>Sou uma pessoa dedicada ao aprendizado contínuo, destaco-me pela persistência . Busco atuar em projetos colaborativos e crescer profissionalmente, contribuindo para soluções de impacto na área de tecnologia.
-</span>
-      </div>
-    </div>
-  </div>
-
-</section>
-  <br>
-<div class="logos">
-  <div class="logos-slide">
-    <img src="./icons/python-original.svg" alt="Python" class="tech-icon">
-    <img src="./icons/javascript-original.svg" alt="JS" class="tech-icon">
-    <img src="./icons/typescript-original.svg" alt="Ts" class="tech-icon">
-    <img src="./icons/java-original-wordmark.svg" alt="Java" class="tech-icon">
-    <img src="./icons/html5-original.svg" alt="HTML" class="tech-icon">
-    <img src="./icons/css3-original.svg" alt="CSS" class="tech-icon">
-    <img src="./icons/react-original.svg" alt="React" class="tech-icon">
-    <img src="./icons/fastapi-original.svg" alt="fastapi" class="tech-icon">
-    <img src="./icons/nodejs-original-wordmark.svg" alt="node" class="tech-icon">
-    <img src="./icons/docker-original.svg" alt="docker" class="tech-icon">
-    <img src="./icons/git-original.svg" alt="git" class="tech-icon">
-    <img src="./icons/pandas-original.svg" alt="pandas" class="tech-icon">
-    <img src="./icons/mysql-original.svg" alt="mysql" class="tech-icon">
-    <img src="./icons/sqlite-original.svg" alt="sqlite" class="tech-icon">
-    <img src="./icons/windows11-original.svg" alt="windows" class="tech-icon">
-    <img src="./icons/linux-original.svg" alt="linux" class="tech-icon">
-  </div>
-</div>
-<br><br><br>
-<!-- SKILLS -->
-<section id="skills">
-  <div class="skills-header">
-    <h2>O que sei e o que <br><span>estou aprendendo</span></h2>
-    <p class="skills-sub">// habilidades</p>
-  </div>
- 
-  <div class="sk-tabs" role="tablist">
-    <button class="sk-tab active" data-cat="backend" role="tab" aria-selected="true">
-      <span class="tab-dot be"></span> Backend
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">&lt;/&gt; wg.dev</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">Sobre</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projetos</a></li>
+      <li><a href="#certificates">Certificados</a></li>
+      <li><a href="#contact">Contato</a></li>
+    </ul>
+    <a href="#contact" class="btn-primary desktop-only">Fale comigo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+      <i class="fa-solid fa-bars"></i>
     </button>
-    <button class="sk-tab" data-cat="frontend" role="tab">
-      <span class="tab-dot fe"></span> Frontend
-    </button>
-    <button class="sk-tab" data-cat="dados" role="tab">
-      <span class="tab-dot de"></span> Bancos &amp; Dados
-    </button>
-    <button class="sk-tab" data-cat="cloud" role="tab">
-      <span class="tab-dot cl"></span> Cloud &amp; DevOps
-    </button>
-    <button class="sk-tab" data-cat="linguagens" role="tab">
-      <span class="tab-dot ln"></span> Linguagens &amp; Estudos
-    </button>
-  </div>
- 
-  <div class="sk-grid" id="sk-grid"></div>
-</section>
+  </nav>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="proj-inner">
-    <div class="sec-eyebrow">projetos</div>
-    <h2 class="sec-title reveal">O que já <span class="bbe">construí</span><br>e o que estou <span class="de">explorando</span></h2><br>
-    <div class="proj-grid">
+  <!-- HERO SECTION -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <span class="badge">ESTUDANTE DE CIÊNCIA DA COMPUTAÇÃO / FULL-STACK</span>
+      <h1>Olá, eu sou <span><br>Welterson Gabriel</span><br></h1>
+      <p>Estudante de Ciência da Computação na UniFG,  e desenvolvedor Full-Stack em formação, com experiência prática 
+construindo e publicando projetos próprios de ponta a ponta — do banco de dados à interface.</p>
 
-      <div class="proj-card be reveal d1">
-        <div class="proj-type be">Back-end</div>
-        <div class="proj-name">API REST</div>
-        <div class="proj-desc">API com JWT, refresh tokens, controle de permissões por roles e documentação automática com Swagger.</div>
-        <div class="proj-tags">
-          <span class="ptag">Python</span>
-          <span class="ptag">FastAPI</span>
-          <span class="ptag">JWT</span>
-        </div>
-        <a href="https://github.com/weltersongabriel/FastAPI" target="_blank" rel="noopener noreferrer" class="proj-github-btn be">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          Ver no GitHub
-        </a>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-primary">Ver Projetos <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        <a href="https://www.linkedin.com/in/welterson-gabriel-131473313/" target="_blank" rel="noopener" class="btn-secondary">Meu LinkedIn <i class="fa-brands fa-linkedin"></i></a>
       </div>
 
-      <div class="proj-card fe reveal d2">
-        <div class="proj-type fe">Front-end</div>
-        <div class="proj-name" style="color: red;">LANDING PAGE</div>
-        <div class="proj-desc">Landing page para uma Barbearia, com demonstração dos cortes e produtos e com botão para contato.</div>
-        <div class="proj-tags">
-          <span class="ptag">html</span>
-          <span class="ptag">css</span>
-          <span class="ptag">javascript</span>
+      <div class="tech-stack">
+        <p>TECNOLOGIAS QUE UTILIZO</p>
+        <div class="tech-icons">
+          <i class="fa-brands fa-python" title="Python"></i>
+          <i class="fa-brands fa-js" title="JavaScript"></i>
+          <i class="fa-brands fa-react" title="React"></i>
+          <i class="fa-brands fa-node-js" title="Node.js"></i>
+          <i class="fa-brands fa-git-alt" title="Git"></i> 
+          <i class="fa-solid fa-database" title="SQL / MySQL"></i> 
         </div>
-        <a href="https://weltersongabriel.github.io/salaomodelo/" target="_blank" rel="noopener noreferrer" class="proj-github-btn fe">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          Ver o Site
-        </a>
-      </div>
-
-      <div class="proj-card de reveal d3">
-        <div class="proj-type de">Eng. Dados</div>
-        <div class="proj-name">DASHBOARD DE VENDAS</div>
-        <div class="proj-desc">Este projeto tem como objetivo demonstrar, na prática, um pipeline de Engenharia de Dados (ETL) completo, desde a remoção dos dados até a visualização em um dashboard interativo.</div>
-        <div class="proj-tags">
-          <span class="ptag">Python</span>
-          <span class="ptag">Pandas</span>
-          <span class="ptag">Docker</span>
-          <span class="ptag">MySQL</span>
-          <span class="ptag">Streamlit</span>
-        </div>
-        <a href="https://github.com/weltersongabriel/etl-vendas-dashboard" target="_blank" rel="noopener noreferrer" class="proj-github-btn de">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          Ver no GitHub
-        </a>
-      </div>
-
-      <div class="proj-card be reveal d4">
-        <div class="proj-type be">Full-Stack</div>
-        <div class="proj-name">ESTOQUE-API</div>
-        <div class="proj-desc">. Cadastro e listagem de categorias
-Cadastro e listagem de produtos com controle de estoque mínimo <br>. Indicadores visuais de status: estoque ok, baixo ou zerado
-<br>. Registro de movimentações de entrada e saída</div>
-        <div class="proj-tags">
-          <span class="ptag">Python</span>
-          <span class="ptag">FastApi</span>
-        </div>
-        <a href="https://github.com/weltersongabriel/estoque-api" target="_blank" rel="noopener noreferrer" class="proj-github-btn be">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          Ver no GitHub
-        </a>
-      </div>
-
-      <div class="proj-card fe reveal d5">
-        <div class="proj-type fe">Front-end</div>
-        <div class="proj-name" style="color: red;">Cyberdragon</div>
-        <div class="proj-desc">Sistema Web para à Atlética dos cursos de TI da Universidadde de Guanambi, com o objetivo
-          de divulgar eventos, jogos e produtos oferecidos pela Atlética Esportiva da UniFG.
-        </div>
-        <div class="proj-tags">
-          <span class="ptag">html</span>
-          <span class="ptag">css</span>
-          <span class="ptag">PHP</span>
-        </div>
-        <a href="https://cyberdragonoficial.com.br/" target="_blank" rel="noopener noreferrer" class="proj-github-btn fe">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          Ver o Site
-        </a>
-      </div>
-
-      <div class="proj-card de reveal d6" style="border-style:dashed;">
-        <div class="proj-type de">Eng. Dados</div>
-        <div class="proj-name">EM BREVE</div>
-        <div class="proj-desc"></div>
-        <div class="proj-tags">
-          <span class="ptag"></span>
-          <span class="ptag"></span>
-          <span class="ptag"></span>
-        </div>
-        <a href="https://github.com/weltersongabriel" target="_blank" rel="noopener noreferrer" class="proj-github-btn de">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          Ver no GitHub
-        </a>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ══ CERTIFICATES SECTION ══ -->
-<section id="certificates">
+    <div class="hero-image-container">
+      <div class="circle-bg"></div>
+      <!-- Substitua 'sua-foto.jpg' pela sua foto real -->
+      <img id="profile-photo" src="./img/perfil.png" alt="Foto de Welterson Gabriel" class="hero-img"
+           onerror="this.onerror=null; this.src='https://via.placeholder.com/360x360/161124/a29bfe?text=Sua+Foto';">
+    </div>
+  </section>
 
-  <div style="max-width:1060px; margin:0 auto;">
-
-  <div class="sec-eyebrow">
-    <span class="dot dot-be"></span>
-    formação &amp; aprendizado
-    <span class="dot dot-de"></span>
-  </div>
-
-  <h2 class="sec-title">Meus <span class="be" style="color: #06B6D4;">Certificados</span></h2>
-  <p class="sec-sub">// conquistas acadêmicas &amp; aprendizado contínuo</p>
-
-  <div class="cert-grid">
-
-    <!-- ── Faculdade ── -->
-    <div class="be-col">
-      <div class="col-head">
-        <div class="col-icon be-i">🎓</div>
-        <div class="col-title">
-          <strong>Faculdade</strong>
-          <span>Certificados Acadêmicos</span>
-        </div>
-      </div>
-
-      <div class="cert-card" style="animation-delay:.05s">
-        <div class="cert-thumb">
-            <img src="./img/facul-01.png" alt="">
-          <!-- Para adicionar imagem: <img src="caminho/imagem.jpg" alt="certificado"> -->
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-        </div>
-        <div class="card-info">
-          <div class="card-name">Estruturas de dados e análise de algoritmos</div>
-          <div class="card-meta"><span>2025</span><span>Universidade</span></div>
-        </div>
-        <span class="card-badge">160h</span>
-      </div>
-
-      <div class="cert-card" style="animation-delay:.12s">
-        <div class="cert-thumb">
-          <img src="./img/facul-02.png" alt="">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-        </div>
-        <div class="card-info">
-          <div class="card-name">Programação de soluções computacionais</div>
-          <div class="card-meta"><span>2025</span><span>Universidade</span></div>
-        </div>
-        <span class="card-badge">160h</span>
-      </div>
-
+  <!-- SOBRE MIM -->
+  <section id="about" class="about">
+    <div class="about-text">
+      <span class="section-tag">SOBRE MIM</span>
+      <h2>Apaixonado por criar soluções digitais</h2>
+      <p>Estou cursando Ciência da Computação na UniFG, com formação full-stack e maior interesse por back-end. Gosto de entender como um sistema funciona por dentro — da modelagem do banco até a lógica que sustenta a aplicação. Fora da sala de aula, aplico isso em projetos reais: back-end com Python (FastAPI) e interfaces com React.</p>
+      <a href="#contact" class="btn-secondary">Fale comigo <i class="fa-solid fa-user"></i></a>
     </div>
 
-    <!-- ── Cursos ── -->
-    <div class="de-col">
-      <div class="col-head">
-        <div class="col-icon de-i">📜</div>
-        <div class="col-title">
-          <strong>Cursos &amp; Treinamentos</strong>
-          <span>Certificados Externos</span>
-        </div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <h3>UniFG</h3>
+        <p>Ciência da Computação</p>
       </div>
-
-      <div class="cert-card" style="animation-delay:.05s">
-        <div class="cert-thumb">
-          <img src="./img/curso-01.png" alt="">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-        </div>
-        <div class="card-info">
-          <div class="card-name">Linguagem de Programação Python</div>
-          <div class="card-meta"><span>2026</span><span>Dio</span></div>
-        </div>
-        <span class="card-badge">2h</span>
-      </div>
-
-      <div class="cert-card" style="animation-delay:.12s">
-        <div class="cert-thumb">
-          <img src="./img/cruso-02.png" alt="">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-        </div>
-        <div class="card-info">
-          <div class="card-name">Introdução a Banco de Dados</div>
-          <div class="card-meta"><span>2025</span><span>Dio</span></div>
-        </div>
-        <span class="card-badge">3h</span>
-      </div>
-      <div class="cert-card" style="animation-delay:.19s">
-        <div class="cert-thumb">
-          <img src="./img/curso-03.png" alt="">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-        </div>
-        <div class="card-info">
-          <div class="card-name">Fundamentos de Engenharia de Dados</div>
-          <div class="card-meta"><span>2026</span><span>DIO</span></div>
-        </div>
-        <span class="card-badge">61h</span>
-      </div>
-
+     <div class="stat-card">
+    <i class="fa-solid fa-trophy"></i>
+    <h3>SBC</h3>
+    <p>Participação na Maratona Brasileira de Programação</p>
     </div>
-  </div>
-</div>
-</section>
-    
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="contact-inner">
-    <div class="sec-eyebrow reveal">contato</div>
-    <h2 class="contact-title reveal">Vamos <span class="grad">conversar</span>?</h2>
-    <p class="contact-sub reveal">
-      Aberto a projetos back-end e oportunidades onde possa<br>
-      também aprender e crescer na área de dados.
-    </p>
-    <a href="mailto:welterson@dev.io" class="contact-email reveal">weltersongabriel.ti@gmail.com</a>
-    <div class="contact-links reveal">
-      <a href="https://github.com/weltersongabriel" class="cl">GitHub</a>
-      <a href="https://www.linkedin.com/in/welterson-gabriel-131473313/" class="cl">LinkedIn</a>
-      <a href="https://www.instagram.com/wg.meira/" class="cl">Instagram</a>
+      <div class="stat-card">
+        <i class="fa-solid fa-server"></i>
+        <h3>Back-end</h3>
+        <p>Área de maior afinidade</p>
+      </div>
+      <div class="stat-card">
+        <i class="fa-solid fa-award"></i>
+        <h3>Full-Stack</h3>
+        <p>Python, TypeScript & JavaScript</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  <span>© 2026 Welterson Gabriel</span>
-  <span>Que desistir nunca seja uma opção.</span>
-</footer>
+  <!-- HABILIDADES -->
+  <section id="skills" class="skills">
+    <span class="section-tag">MINHAS SKILLS</span>
+    <h2>Tecnologias que Domino</h2>
 
-<script src="./script.js"></script>
-</body>
-</html>
+    <div class="skills-grid">
+      <div class="skill-item">
+        <div class="skill-info"><span><i class="fa-brands fa-python"></i> Python / FastAPI</span><span>80%</span></div>
+        <div class="progress-bar"><div class="progress" style="width: 80%;"></div></div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-info"><span><i class="fa-brands fa-js"></i> JavaScript / TypeScript</span><span>70%</span></div>
+        <div class="progress-bar"><div class="progress" style="width: 70%;"></div></div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-info"><span><i class="fa-brands fa-react"></i> React / HTML / CSS</span><span>90%</span></div>
+        <div class="progress-bar"><div class="progress" style="width: 90%;"></div></div>
+      </div>
 
 
+      <div class="skill-item">
+        <div class="skill-info"><span><i class="fa-brands fa-node"></i> Node.js / npm</span><span>75%</span></div>
+        <div class="progress-bar"><div class="progress" style="width: 75%;"></div></div>
+      </div>
+
+      
+      <div class="skill-item">
+        <div class="skill-info"><span><i class="fa-solid fa-database"></i> SQLAlchemy / MySQL</span><span>75%</span></div>
+        <div class="progress-bar"><div class="progress" style="width: 75%;"></div></div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-info"><span><i class="fa-brands fa-git-alt"></i> Git & GitHub</span><span>80%</span></div>
+        <div class="progress-bar"><div class="progress" style="width: 80%;"></div></div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-info"><span><i class="fa-brands fa-docker"></i> Docker</span><span>30%</span></div>
+        <div class="progress-bar"><div class="progress" style="width: 30%;"></div></div>
+      </div>
+      <!-- As porcentagens acima são uma autoavaliação sua — ajuste livremente para refletir o nível real em cada uma -->
+    </div>
+  </section>
+
+  <!-- PROJETOS -->
+  <section id="projects" class="projects">
+    <span class="section-tag">PROJETOS EM DESTAQUE</span>
+    <h2>Alguns dos meus trabalhos recentes</h2>
+
+    <div class="projects-grid">
+      <!-- Projeto 1 -->
+      <div class="project-card">
+        <div class="project-img">
+          <!-- Troque pela captura de tela real: <img src="cyberdragon.jpg" alt="Atlética Cyberdragon"> -->
+          <div class="project-img-placeholder"><img src="./icons/chmaai.png" alt="Atlética Cyberdragon"></div>
+        </div>
+        <div class="project-content">
+          <h3>Chama Aí</h3>
+          <p>Sistema web para conectar clientes e prestadores de serviços de forma simples, rápida e organizada.</p>
+          <a href="https://github.com/weltersongabriel/ChamaAi" target="_blank" rel="noopener" class="project-link">Ver no GitHub <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Projeto 2 -->
+      <div class="project-card">
+        <div class="project-img">
+          <!-- Troque pela captura de tela real: <img src="cyberdragon.jpg" alt="Atlética Cyberdragon"> -->
+          <div class="project-img-placeholder"><img src="./icons/cyberdragon.png" alt="Atlética Cyberdragon"></div>
+        </div>
+        <div class="project-content">
+          <h3>Atlética Cyberdragon</h3>
+          <p>Desenvolvimento completo de site web institucional com implementação de cadastro de alunos, loja virtual e divulgação de eventos da atlética.</p>
+          <a href="https://cyberdragonoficial.com.br/" target="_blank" rel="noopener" class="project-link">Ver Site <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Projeto 3 -->
+      <div class="project-card">
+        <div class="project-img">
+          <!-- Troque pela captura de tela real: <img src="quadra-unifg.jpg" alt="Reserva Quadra UniFG"> -->
+          <div class="project-img-placeholder"><img src="./icons/quadra-unifg.png" alt="Reserva Quadra UniFG"></div>
+        </div>
+        <div class="project-content">
+          <h3>Reserva Quadra UniFG</h3>
+          <p>Sistema em React para reserva de horários na quadra da faculdade, com versão mobile responsiva dedicada.</p>
+          <a href="https://github.com/ericjunq/unifg-reservas" target="_blank" rel="noopener" class="project-link">Ver no GitHub <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOVA SEÇÃO: CERTIFICADOS -->
+  <section id="certificates" class="certificates">
+    <span class="section-tag">MEUS CERTIFICADOS</span>
+    <h2>Cursos e Certificações</h2>
+
+    <div class="certificates-grid">
+      <!-- Certificado 1: troque o cert-img-placeholder por-->
+            
+      <div class="certificate-card">
+        <div class="cert-img"><img src="./img/facul-01.png" alt="Nome do certificado"></div>
+        <div class="cert-content">
+          <h3>Estruturas de dados e análise de algoritmos</h3>
+          <p class="cert-issuer"><i class="fa-solid fa-graduation-cap"></i> UniFG</p>
+          <p class="cert-date">Emitido em: 2025</p>
+        </div>
+      </div>
+
+      <!-- Certificado 2 -->
+      <div class="certificate-card">
+        <div class="cert-img"><img src="./img/facul-02.png" alt="Nome do certificado"></div>
+        <div class="cert-content">
+          <h3>Programação de soluções computacionais</h3>
+          <p class="cert-issuer"><i class="fa-solid fa-graduation-cap"></i> UniFG</p>
+          <p class="cert-date">Emitido em: 2024</p>
+        </div>
+      </div>
+
+      <div class="certificate-card">
+        <div class="cert-img"><img src="./img/facul-03.png" alt="Nome do certificado"></div>
+        <div class="cert-content">
+          <h3>Modelagem de software</h3>
+          <p class="cert-issuer"><i class="fa-solid fa-graduation-cap"></i> UniFG</p>
+          <p class="cert-date">Emitido em: 2025</p>
+        </div>
+      </div>
+
+      <!-- Certificado 3 -->
+      <div class="certificate-card">
+        <div class="cert-img"><img src="./img/alura-fastapi.png" alt="Nome do certificado"></div>
+        <div class="cert-content">
+          <h3>FastAPI e Python</h3>
+          <p class="cert-issuer"><i class="fa-solid fa-graduation-cap"></i> Alura</p>
+          <p class="cert-date">Emitido em: 2026</p>
+        </div>
+      </div>
+
+            <!-- Certificado 4 -->
+      <div class="certificate-card">
+        <div class="cert-img"><img src="./img/react.png" alt="Nome do certificado"></div>
+        <div class="cert-content">
+          <h3>React.js</h3>
+          <p class="cert-issuer"><i class="fa-solid fa-graduation-cap"></i> Alura</p>
+          <p class="cert-date">Emitido em: 2026</p>
+        </div>
+      </div>
+
+      <div class="certificate-card">
+        <div class="cert-img"><img src="./img/curso-03.png" alt="Nome do certificado"></div>
+        <div class="cert-content">
+          <h3>Fundamentos da Engenharia de Dados</h3>
+          <p class="cert-issuer"><i class="fa-solid fa-graduation-cap"></i> Dio</p>
+          <p class="cert-date">Emitido em: 2026</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <!-- RODAPÉ E CONTATO -->
+  <footer id="contact" class="footer">
+    <!-- Card de Ação (CTA) -->
+    <div class="footer-cta-card">
+      <div class="cta-text">
+        <span class="section-tag">VAMOS TRABALHAR JUNTOS</span>
+        <h2>Tem um projeto em mente?</h2>
+        <p>Estou sempre aberto a discutir novas oportunidades, projetos ou apenas trocar uma ideia!</p>
+      </div>
+      <!-- Troque 'seuemail@exemplo.com' pelo seu e-mail real -->
+      <a href="mailto:weltersongabriel.ti@gmail.com" class="btn-primary">
+        Entrar em Contato <i class="fa-solid fa-paper-plane"></i>
+      </a>
+    </div>
+
+    <!-- Conteúdo Principal do Rodapé -->
+    <div class="footer-grid">
+      <!-- Coluna 1: Logo e Descrição -->
+      <div class="footer-col">
+        <div class="logo">&lt;/&gt; welterson.dev</div>
+        <p class="footer-desc">
+          Estudante de Ciência da Computação, com foco em back-end e dados, construindo soluções full-stack.
+        </p>
+      </div>
+
+      <!-- Coluna 2: Navegação Rápida -->
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">Sobre</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projetos</a></li>
+          <li><a href="#certificates">Certificados</a></li>
+        </ul>
+      </div>
+
+      <!-- Coluna 3: Redes e Contato -->
+      <div class="footer-col">
+        <h4>Redes & Contato</h4>
+        <!-- Troque pelo seu e-mail real -->
+        <p class="contact-email"><i class="fa-solid fa-envelope"></i> weltersongabriel.ti@gmail.com</p>
+        <div class="social-links">
+          <a href="https://github.com/weltersongabriel" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/welterson-gabriel-131473313/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          <!-- Troque 5500000000000 pelo seu número com DDI+DDD -->
+          <a href="https://wa.me/5538998661848" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Linha do Copyright -->
+    <div class="footer-bottom">
+      <p>&copy; 2026 Welterson Gabriel. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', isOpen);
+      menuToggle.innerHTML = isOpen
+        ? '<i class="fa-solid fa-xmark"></i>'
+        : '<i class="fa-solid fa-bars"></i>';
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+      });
+    });
+
+    // Marca o link ativo no menu conforme a seção visível na tela
+    const sections = document.querySelectorAll('section[id], footer[id]');
+    const navAnchors = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const top = section.offsetTop - 100;
+        if (window.scrollY >= top) current = section.getAttribute('id');
+      });
+      navAnchors.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
+    });
+  </script>
 </body>
 </html>
